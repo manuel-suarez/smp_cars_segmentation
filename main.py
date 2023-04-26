@@ -1,4 +1,6 @@
 import os
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 import logging
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
