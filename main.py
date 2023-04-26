@@ -133,7 +133,7 @@ def get_training_augmentation():
         albu.OneOf(
             [
                 albu.RandomContrast(p=1),
-                albu.HueSaturarionValue(p=1),
+                albu.HueSaturationValue(p=1),
             ],
             p=0.9,
         ),
