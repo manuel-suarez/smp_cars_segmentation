@@ -249,9 +249,29 @@ for i in range(0, 40):
     # do something (save model, change lr, etc.)
     if max_score < valid_logs['iou_score']:
         max_score = valid_logs['iou_score']
-        torch.save(model, './best_mode.pth')
+        torch.save(model, './best_model.pth')
         logging.info('Model saved!')
     if i == 25:
         optimizer.param_groups[0]['lr'] = 1e-5
         logging.info('Decrease decoder learning rate to 1e-5!')
+
+# load best saved checkpoint
+best_model = torch.load('./best_model.pth')
+# create test dataset
+test_dataset = Dataset(
+    x_test_dir,
+    y_test_dir,
+    augmentation=get_validation_augmentation(),
+    preprocessing=get_preprocessing(preprocessing_fn),
+    classes=CLASSES,
+)
+test_dataloader = DataLoader(test_dataset)
+# evaluate model on test set
+test_epoch = smp.utils.train.ValidEpoch(
+    model=best_model,
+    loss=loss,
+    metrics=metrics,
+    device=DEVICE,
+)
+logs = test_epoch.run(test_dataloader)
 logging.info('Done!')
