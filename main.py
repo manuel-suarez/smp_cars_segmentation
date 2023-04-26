@@ -218,7 +218,7 @@ valid_dataset = Dataset(
 train_loader = DataLoader(train_dataset, batch_size=8, shuffle=True, num_workers=12)
 valid_loader = DataLoader(valid_dataset, batch_size=1, shuffle=False, num_workers=4)
 
-loss = smp.losses.DiceLoss()
+loss = smp.utils.losses.DiceLoss()
 metrics = [
     smp.utils.metrics.IoU(threshold=0.5),
 ]
