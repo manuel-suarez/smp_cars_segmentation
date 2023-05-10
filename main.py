@@ -3,7 +3,6 @@ import logging
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 import numpy as np
-import cv2
 import matplotlib.pyplot as plt
 
 logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s', level=logging.INFO)

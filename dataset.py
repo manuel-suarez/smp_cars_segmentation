@@ -1,4 +1,5 @@
 import os
+import cv2
 from torch.utils.data import Dataset as BaseDataset
 
 class Dataset(BaseDataset):
