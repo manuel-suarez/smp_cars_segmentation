@@ -36,7 +36,7 @@ from torch.utils.data import DataLoader
 
 from dataset import Dataset
 
-dataset = Dataset(x_train_dir, y_train_dir, classes=['car', 'tree'])
+dataset = Dataset(x_train_dir, y_train_dir, classes=['car', 'tree', 'fence'])
 image, mask = dataset[4] # get some sample
 visualize("figure1.png", image=image, cars_mask=mask.squeeze())
 
