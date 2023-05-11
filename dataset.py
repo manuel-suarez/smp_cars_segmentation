@@ -40,11 +40,13 @@ class Dataset(BaseDataset):
         # read data
         image = cv2.imread(self.images_fps[item])
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        print(f"Image shape: {image.shape}")
         mask = cv2.imread(self.masks_fps[item], 0)
 
         # extract certain classes from mask (e.g. cars)
         masks = [(mask == v) for v in self.class_values]
         mask = np.stack(masks, axis=-1).astype('float')
+        print(f"Mask shape: {mask.shape}")
 
         # apply augmentations
         if self.augmentation:
