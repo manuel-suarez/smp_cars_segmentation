@@ -32,6 +32,7 @@ class Dataset(BaseDataset):
 
         # convert str names to class values on masks
         self.class_values = [self.CLASSES.index(cls.lower()) for cls in classes]
+        print(f"Class values: {self.class_values}")
 
         self.augmentation = augmentation
         self.preprocessing = preprocessing
