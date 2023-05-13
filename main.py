@@ -38,7 +38,7 @@ from dataset import Dataset
 
 dataset = Dataset(x_train_dir, y_train_dir, classes=['car', 'tree', 'fence'])
 image, mask = dataset[4] # get some sample
-visualize("figure1.png", image=image, cars_mask=mask.squeeze())
+visualize("figures/figure1.png", image=image, cars_mask=mask.squeeze())
 
 # Data augmentation
 import albumentations as albu
@@ -112,7 +112,7 @@ augmented_dataset = Dataset(
 # same image with different random transforms
 for i in range(3):
     image, mask = augmented_dataset[1]
-    visualize(f"figure{i+2}.png", image=image, mask=mask.squeeze(-1))
+    visualize(f"figures/figure{i+2}.png", image=image, mask=mask.squeeze(-1))
 
 # Model creation and training
 import torch
@@ -225,7 +225,7 @@ for i in range(5):
     x_tensor = torch.from_numpy(image).to(DEVICE).unsqueeze(0)
     pr_mask = best_model.predict(x_tensor)
     pr_mask = (pr_mask.squeeze().cpu().numpy().round())
-    visualize(f"figure_{i+5}",
+    visualize(f"figures/figure_{i+5}",
               image=image_vis,
               ground_truth_mask=gt_mask,
               predicted_mask=pr_mask
