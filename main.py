@@ -121,7 +121,7 @@ import segmentation_models_pytorch as smp
 #ENCODER = 'se_resnext50_32x4d'
 ENCODER = 'resnet34'
 ENCODER_WEIGHTS = 'imagenet'
-CLASSES = ['car']
+CLASSES = ['sky','tree','car']
 ACTIVATION = 'sigmoid' # could be None for logits or 'softmax2d' for multiclass segmentation
 DEVICE = 'cuda'
 
